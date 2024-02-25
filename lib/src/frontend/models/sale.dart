@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'products/product.dart';
 
 class Sale {
@@ -17,18 +19,22 @@ class Sale {
   double calculateTotalAmount() {
     double total = 0;
     for (var product in products) {
-      total += product.price * product.soldQuantity; // Utiliser soldQuantity au lieu de stockQuantity
+      total += product.price *
+          product
+              .soldQuantity; // Utiliser soldQuantity au lieu de stockQuantity
     }
     return total;
   }
 
   // Méthode pour afficher les détails de la vente
   void displaySaleDetails() {
-    print('Date de la vente: ${date.toLocal()}');
-    print('Client: $clientName');
+    debugPrint('Date de la vente: ${date.toLocal()}');
+
+    debugPrint('Client: $clientName');
     print('Produits vendus:');
     for (var product in products) {
-      print('${product.name} - Quantité vendue: ${product.soldQuantity} - Prix unitaire: ${product.price} FCFA');
+      print(
+          '${product.name} - Quantité vendue: ${product.soldQuantity} - Prix unitaire: ${product.price} FCFA');
     }
     print('Montant total: $totalAmount FCFA');
   }
@@ -63,10 +69,3 @@ class ProductDetails {
     required this.amount,
   });
 }
-
-
-
-
-
-
-

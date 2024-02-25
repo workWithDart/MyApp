@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:esc_pos_utils/pos_printing.dart';
 
 class PrintScreen extends StatelessWidget {
   @override
@@ -18,9 +17,8 @@ class PrintScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-               onPressed: () async {
+              onPressed: () async {
                 // Logique pour déclencher l'impression
-                await _printContent();
               },
               child: Text('Imprimer'),
             ),
@@ -32,24 +30,24 @@ class PrintScreen extends StatelessWidget {
 }
 
 
-Future<void> _printContent() async {
-    final profile = await CapabilityProfile.load();
-    final printer = NetworkPrinter(PaperSize.mm80, profile);
+// Future<void> _printContent() async {
+//     final profile = await CapabilityProfile.load();
+//     final printer = NetworkPrinter(PaperSize.mm80, profile);
 
-    final PosPrintResult res = await printer.connect('192.168.0.100', port: 9100);
+//     final PosPrintResult res = await printer.connect('192.168.0.100', port: 9100);
 
-    if (res != PosPrintResult.success) {
-      print('Échec de la connexion à l\'imprimante');
-      return;
-    }
+//     if (res != PosPrintResult.success) {
+//       print('Échec de la connexion à l\'imprimante');
+//       return;
+//     }
 
-    printer.text('Contenu imprimable', styles: PosStyles(align: PosAlign.center));
+//     printer.text('Contenu imprimable', styles: PosStyles(align: PosAlign.center));
 
-    final PosPrintResult res2 = await printer.cut();
-    if (res2 != PosPrintResult.success) {
-      print('Erreur lors de la coupe du papier');
-    }
+//     final PosPrintResult res2 = await printer.cut();
+//     if (res2 != PosPrintResult.success) {
+//       print('Erreur lors de la coupe du papier');
+//     }
 
-    await printer.disconnect();
-  }
-}
+//     await printer.disconnect();
+//   }
+// }

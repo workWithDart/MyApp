@@ -1,5 +1,6 @@
-
 import 'package:my_app/src/frontend/models/clients/client.dart';
+
+import '../products/product.dart';
 
 class SaleDetails {
   final int saleId;
@@ -24,7 +25,9 @@ class SaleDetails {
       'saleId': saleId,
       'saleDate': saleDate.toIso8601String(),
       'clientName': clientName,
-      'productDetailsList': productDetailsList.map((productDetails) => productDetails.toJson()).toList(),
+      'productDetailsList': productDetailsList
+          .map((productDetails) => productDetails.toJson())
+          .toList(),
       'soldQuantity': soldQuantity,
       'totalAmount': totalAmount,
     };
@@ -36,7 +39,14 @@ class SaleDetails {
       saleId: json['saleId'],
       saleDate: DateTime.parse(json['saleDate']),
       clientName: json['clientName'],
-      productDetailsList: (json['productDetailsList'] as List).map((productJson) => ProductDetails(productJson)).toList(),
+      productDetailsList: (json['productDetailsList'] as List)
+          .map(
+            (productJson) => ProductDetails(
+              quantity: productJson['quantity'],
+              product: Product.fromJson(productJson['product']),
+            ),
+          )
+          .toList(),
       soldQuantity: json['soldQuantity'],
       totalAmount: json['totalAmount'],
     );

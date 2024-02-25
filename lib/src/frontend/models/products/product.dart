@@ -6,21 +6,22 @@ class Product {
   late final String category;
   late final double price;
   late final int stockQuantity;
-  //final int soldQuantity;
+  final int soldQuantity;
   late final String packaging; // Décommentez cette ligne si nécessaire
   late final String size; // Décommentez cette ligne si nécessaire
 
   // Ce constructeur est utilisé pour créer une instance de Product
-  Product( {
+  Product({
     required this.id,
-    this.name='',
+    this.name = '',
     required this.type,
     required this.category,
-    this.price=0.0,
+    this.price = 0.0,
+    this.soldQuantity = 0,
     required this.stockQuantity,
-   // required this.soldQuantity,
+    // required this.soldQuantity,
     required this.packaging, // Décommentez cette ligne si nécessaire
-     required this.size, // Décommentez cette ligne si nécessaire
+    required this.size, // Décommentez cette ligne si nécessaire
   });
 
   // La méthode fromJson permet de créer une instance de Product à partir d'un objet JSON.
@@ -34,7 +35,7 @@ class Product {
       stockQuantity: json['stockQuantity'] as int,
       //soldQuantity: json['soldQuantity'] as int,
       packaging: json['packaging'] as String,
-       size: json['size'] as String,
+      size: json['size'] as String,
     );
   }
 
@@ -48,7 +49,7 @@ class Product {
       'price': price,
       'stockQuantity': stockQuantity,
       'packaging': packaging,
-       'size': size,
+      'size': size,
     };
   }
 }

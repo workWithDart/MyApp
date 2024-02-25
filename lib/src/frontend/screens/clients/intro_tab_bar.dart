@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/src/frontend/screens/clients/add_client_screen.dart';
 import 'package:my_app/src/frontend/screens/clients/list_clients_screen.dart';
-import 'package:my_app/src/frontend/screens/clients/packaging_situation_screen.dart';
 import 'package:my_app/src/frontend/screens/clients/payment_screen.dart';
 
 class IntroTabBar extends StatelessWidget {
@@ -28,16 +27,14 @@ class IntroTabBar extends StatelessWidget {
                 text: 'Opération clients',
               ),
             ],
-            ),
-        ),
-        body: TabBarView(
-          children: [
-          AddClientScreen(), 
-          ListClientsScreen(),
-          PackagingSituationScreen(),
-          PaymentScreen() 
-          ]
           ),
+        ),
+        body: TabBarView(children: [
+          AddClientScreen(),
+          const ListClientsScreen(),
+          // PackagingSituationScreen(),
+          PaymentScreen()
+        ]),
       ),
     );
   }

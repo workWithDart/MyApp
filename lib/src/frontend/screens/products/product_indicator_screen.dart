@@ -51,8 +51,9 @@ class _ProductIndicatorScreenState extends State<ProductIndicatorScreen> {
               controller: _controller,
               children: [
                 AddProductScreen(),
-                EditProductScreen(product: productList.isNotEmpty ? productList[0] : Product()),
-                ProductListScreen(productList),
+                EditProductScreen(
+                    product: productList.isNotEmpty ? productList[0] : null),
+                ProductListScreen(),
                 PrintScreen(),
               ],
             ),

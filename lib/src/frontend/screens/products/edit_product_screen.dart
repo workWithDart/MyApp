@@ -3,11 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/src/frontend/models/products/product.dart';
 
-
 class EditProductScreen extends StatefulWidget {
-  final Product product;
+  final Product? product;
 
-  EditProductScreen({required this.product});
+  const EditProductScreen({this.product});
 
   @override
   _EditProductScreenState createState() => _EditProductScreenState();
@@ -21,25 +20,36 @@ class _EditProductScreenState extends State<EditProductScreen> {
   late TextEditingController productPackagingController;
   late TextEditingController stockQuantityController;
   late TextEditingController productSizeController;
-  
 
   @override
   void initState() {
     super.initState();
-    productNameController = TextEditingController(text: widget.product.name);
-    priceController = TextEditingController(text: widget.product.price.toString());
-   productCategoryController = TextEditingController(text: widget.product.category);
-   productTypeController = TextEditingController(text: widget.product.type);
-   productPackagingController = TextEditingController(text: widget.product.packaging);
-   stockQuantityController = TextEditingController(text: widget.product.stockQuantity.toString());
-   productSizeController = TextEditingController(text: widget.product.size);
-    
+    productNameController = TextEditingController(text: widget.product?.name);
+    priceController =
+        TextEditingController(text: widget.product?.price.toString());
+    productCategoryController =
+        TextEditingController(text: widget.product?.category);
+    productTypeController = TextEditingController(text: widget.product?.type);
+    productPackagingController =
+        TextEditingController(text: widget.product?.packaging);
+    stockQuantityController =
+        TextEditingController(text: widget.product?.stockQuantity.toString());
+    productSizeController = TextEditingController(text: widget.product?.size);
   }
 
-  void updateProduct(int productId, String newName, double newPrice, String newCategory, String newType, String newPackaging, int newStockQuantity, String newSize) {
+  void updateProduct(
+      int productId,
+      String newName,
+      double newPrice,
+      String newCategory,
+      String newType,
+      String newPackaging,
+      int newStockQuantity,
+      String newSize) {
     // Recherchez le produit à mettre à jour dans la liste
     List<Product>? productList;
-    Product? productToUpdate = productList?.firstWhere((product) => product.id == productId, orElse: () => null);
+    Product? productToUpdate =
+        productList?.firstWhere((product) => product.id == productId);
 
     // Vérifiez si le produit a été trouvé
     if (productToUpdate != null) {
@@ -87,7 +97,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
               controller: productPackagingController,
               decoration: InputDecoration(labelText: 'Emballage du produit'),
             ),
-             TextField(
+            TextField(
               controller: stockQuantityController,
               decoration: InputDecoration(labelText: 'Quantité en stock '),
             ),
@@ -100,15 +110,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
               controller: productSizeController,
               decoration: InputDecoration(labelText: 'Volume du produit'),
             ),
-            
-
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 // Appeler la fonction de mise à jour du produit
-                updateProduct(
-                 
-                );
+                // updateProduct(
+
+                // );
 
                 // Revenir à l'écran précédent
                 Navigator.pop(context);
